@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'odp-connect-stats'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['ODP_ENDPOINT_IP:PORT']
+    metrics_path: '/actuator/prometheus'

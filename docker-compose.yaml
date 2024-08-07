@@ -1,0 +1,29 @@
+services:
+ prometheus:
+   image: prom/prometheus:v2.53.1
+   container_name: odp-demo-prometheus
+   ports:
+     # port number on the left hand side can be changed to other value if 9090 is beeing in use
+     - 9090:9090
+   command:
+     - '--config.file=/etc/prometheus/prometheus.yaml'
+   volumes:
+     - ./config/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+     - prometheus:/prometheus
+   restart: unless-stopped
+ grafana:
+   image: grafana/grafana-oss:11.1.3
+   container_name: odp-demo-grafana
+   ports:
+     # port number on the left hand side can be changed to other value if 3000 is beeing in use
+     - 3000:3000
+   volumes:
+     # provisioning configs
+     - ./config/grafana/provisioning:/etc/grafana/provisioning
+     # dashboards to privision
+     - ./config/grafana/dashboards:/var/lib/grafana/dashboards
+   restart: unless-stopped
+   
+volumes:
+  prometheus:
+    driver: local
