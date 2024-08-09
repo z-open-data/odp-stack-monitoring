@@ -4,7 +4,7 @@ services:
    container_name: prometheus
    ports:
      # port number on the left hand side can be changed to other value if 9090 is beeing in use
-     - 9091:9090
+     - 9090:9090
    command:
      - '--config.file=/etc/prometheus/prometheus.yaml'
    volumes:
@@ -16,7 +16,7 @@ services:
    container_name: grafana
    ports:
      # port number on the left hand side can be changed to other value if 3000 is beeing in use
-     - 3002:3000
+     - 3000:3000
    volumes:
      - grafana-data:/var/lib/grafana
      # provisioning configs
