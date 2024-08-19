@@ -76,7 +76,8 @@ If there is an existing Prometheus/Grafana setup running, provided dashboard can
   Restart Prometheus after changes.
 
 
-- Now you can import dashboad to your Grafana instance. Navigate to `Dashboards` section and click on the blue `New` button in the right upper corner, select `Import` option. Click on `Upload dashboard JSON file` text and navigate to `<repository root folder>/config/grafana/dashboards`, select `OMEGAMON Data Provider Stack Monitoring V2.1.0.json` file and click `Open`. In the lower section of the screen select appropriate Prometheus datasource (the one you updated a moment ago) and click `Import`.
+- Now you can import dashboad to your Grafana instance. Navigate to `Dashboards` section and click on the blue `New` button in the right upper corner, select `Import` option. Below the section `Find and import dashboards for common applications at grafana.com/dashboards` enter dashboard ID for this dashboard - `21708`. Click `Load` button.
+In the lower section of the screen select appropriate Prometheus datasource (the one you updated a moment ago) and click `Import`.
   You should be able to see metrics of your ODP Stack in newly added dashboard.
 
 ## Dedicated docker setup
