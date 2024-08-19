@@ -70,20 +70,20 @@ If there is an existing Prometheus/Grafana setup running, provided dashboard can
         metrics_path: '/actuator/prometheus'
   ```
   Where:
-    - `ODP_ENDPOINT_IP` - ip address of an ODP Connect instance
+    - `ODP_ENDPOINT_IP` - ip address of an OMEGAMON Data Connect instance
     - `PORT` - `server.port` value from `config.yaml`
   
   Restart Prometheus after changes.
 
 
-- Now you can import dashboad to your Grafana instance. Navigate to `Dashboards` section and click on the blue `New` button in the right upper corner, select `Import` option. Below the section `Find and import dashboards for common applications at grafana.com/dashboards` enter dashboard ID for this dashboard - `21708`. Click `Load` button.
+- Now you can import dashboard to your Grafana instance. Navigate to `Dashboards` section and click on the blue `New` button in the right upper corner, select `Import` option. Below the section `Find and import dashboards for common applications at grafana.com/dashboards` enter dashboard ID for this dashboard - `21708`. Click `Load` button.
 In the lower section of the screen select appropriate Prometheus datasource (the one you updated a moment ago) and click `Import`.
   You should be able to see metrics of your ODP Stack in newly added dashboard.
 
 ## Dedicated docker setup
 Before you get started installing the Prometheus/Grafana stack, ensure you install the latest version of [docker](https://docs.docker.com/engine/install/) on your Docker host machine.
 
-You need to change ODP Connect host and port values in Prometheus configuration. Edit the `<repository root folder>/config/prometheus/prometheus.yml` file. The `targets` section is where you define what should be monitored by Prometheus.
+You need to change OMEGAMON Data Connect host and port values in Prometheus configuration. Edit the `<repository root folder>/config/prometheus/prometheus.yml` file. The `targets` section is where you define what should be monitored by Prometheus.
 ```yaml
     scrape_configs:
       - job_name: 'odp-connect-stats'
@@ -93,14 +93,14 @@ You need to change ODP Connect host and port values in Prometheus configuration.
         metrics_path: '/actuator/prometheus'
   ```
 Where:
-- `ODP_ENDPOINT_IP` - ip address of an ODP Connect instance
+- `ODP_ENDPOINT_IP` - ip address of an OMEGAMON Data Connect instance
 - `PORT` - `server.port` value from `config.yaml`
 
 Once configurations are done you can start up Prometheus/Grafana stack. From the repository root directory run the following command:
 ```sh
 docker-compose up -d
 ```
-At that stage Prometheus should be accesible via `http://<Host IP Address>:9090`, for example http://localhost:9090. To make sure that data is being pulled from ODP Connect endpoint, navigate to `Status` -> `Targets` and check the state of the endpoint. It must be `UP`. If it is not, check the `prometheus.yaml` file once again and make sure url and port values are correct. Then restart Prometheus:
+At that stage Prometheus should be accesible via `http://<Host IP Address>:9090`, for example http://localhost:9090. To make sure that data is being pulled from OMEGAMON Data Connect endpoint, navigate to `Status` -> `Targets` and check the state of the endpoint. It must be `UP`. If it is not, check the `prometheus.yaml` file once again and make sure url and port values are correct. Then restart Prometheus:
 ```shell
 docker-compose restart prometheus
 ```
