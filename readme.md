@@ -34,18 +34,21 @@ To enable Data Broker metrics, we need to modify `PARMLIB` member and add these 
 ```                                  
 KAY.CIDB.STATS=ON
 ```
-This will enable stats subsystem. By default, data is being sent every 30 seconds. To change the interval, you can add an entry to overwrite the default value:
+This will enable stats subsystem. 
+
+By default, data is being sent every 30 seconds. To change that, you can add an entry to overwrite the default value. 
+
+The following parameter will set refresh interval to 60 seconds:
 ```
 KAY.CIDB.STATS.INTERVAL=60
 ```
-This will set refresh interval to 60 seconds.
 
+The following entries will create a forwarder and point stats data to your Data Connect instance defined by `SINK_HOST` and `SINK_PORT` parameters.
 ```
 KAY.CIDB.FWD.ST.SOURCE_STORE=STATS                      
 KAY.CIDB.FWD.ST.SINK_HOST=[DATA_CONNECT_HOST]   
 KAY.CIDB.FWD.ST.SINK_PORT=[DATA_CONNECT_PORT]
 ```
-This will create a forwarder and point stats data to your Data Connect instance defined by `SINK_HOST` and `SINK_PORT` parameters.
 Once all that is done, restart Data Broker for new settings to take effect.
 
 At that point, both Data Connect and Data Broker metrics (`odp_server_*` and `odp_broker_*`) will be available on your Prometheus endpoint.
@@ -53,9 +56,9 @@ At that point, both Data Connect and Data Broker metrics (`odp_server_*` and `od
 # Installation & Configuration
 Clone the project repository.
 
-There are two ways of how you can you use provided dashboard:
+There are two ways of how you can use provided dashboard:
 - in existing Prometheus/Grafana environment
-- in dedicated docker based environment
+- in dedicated Docker based environment
 
 ## Existing Prometheus/Grafana setup
 If there is an existing Prometheus/Grafana setup running, provided dashboard can be imported with some minor adjustments.
@@ -80,7 +83,7 @@ If there is an existing Prometheus/Grafana setup running, provided dashboard can
 In the lower section of the screen select appropriate Prometheus datasource (the one you updated a moment ago) and click `Import`.
   You should be able to see metrics of your ODP Stack in newly added dashboard.
 
-## Dedicated docker setup
+## Dedicated Docker setup
 Before you get started installing the Prometheus/Grafana stack, ensure you install the latest version of [docker](https://docs.docker.com/engine/install/) on your Docker host machine.
 
 You need to change OMEGAMON Data Connect host and port values in Prometheus configuration. Edit the `<repository root folder>/config/prometheus/prometheus.yml` file. The `targets` section is where you define what should be monitored by Prometheus.

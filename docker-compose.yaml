@@ -3,7 +3,7 @@ services:
    image: prom/prometheus:v2.53.1
    container_name: prometheus
    ports:
-     # port number on the left hand side can be changed to other value if 9090 is beeing in use
+     # port number on the left hand side can be changed to other value if 9090 is in use
      - 9090:9090
    command:
      - '--config.file=/etc/prometheus/prometheus.yaml'
@@ -23,13 +23,13 @@ services:
    depends_on:
      - prometheus
    ports:
-     # port number on the left hand side can be changed to other value if 3000 is beeing in use
+     # port number on the left hand side can be changed to other value if 3000 is in use
      - 3000:3000
    volumes:
      - grafana-data:/var/lib/grafana
      # provisioning configs
      - ./config/grafana/provisioning:/etc/grafana/provisioning
-     # dashboards to privision
+     # dashboards to provision
      - ./config/grafana/dashboards:/etc/grafana/artifacts/dashboards
    healthcheck:
      test: [ "CMD", "wget", "--spider", "http://localhost:3000" ]
