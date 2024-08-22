@@ -54,8 +54,6 @@ Once all that is done, restart Data Broker for new settings to take effect.
 At that point, both Data Connect and Data Broker metrics (`odp_server_*` and `odp_broker_*`) will be available on your Prometheus endpoint.
 
 # Installation & Configuration
-Clone the project repository.
-
 There are two ways of how you can use provided dashboard:
 - in existing Prometheus/Grafana environment
 - in dedicated Docker based environment
@@ -85,6 +83,8 @@ In the lower section of the screen select appropriate Prometheus datasource (the
 
 ## Dedicated Docker setup
 Before you get started installing the Prometheus/Grafana stack, ensure you install the latest version of [docker](https://docs.docker.com/engine/install/) on your Docker host machine.
+
+Clone the project repository.
 
 You need to change OMEGAMON Data Connect host and port values in Prometheus configuration. Edit the `<repository root folder>/config/prometheus/prometheus.yml` file. The `targets` section is where you define what should be monitored by Prometheus.
 ```yaml
